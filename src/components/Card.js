@@ -3,7 +3,31 @@ import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 const Card = () => {
-  return <h2>card component</h2>;
+  const {githubUser} = React.useContext(GithubContext);
+  const {avatar_url,html_url,name,company,blog,bio,location,twiteer_username}=githubUser
+  return <Wrapper>
+    <header>
+      <img src={avatar_url} alt={name}/>
+      <div>
+        <h4>Name:{name?name:'nan'}</h4>
+      </div>
+      <a href={html_url}>Follow</a>
+    </header>
+
+    <p className='bio'>{bio}</p>
+    <div className='links'>
+      <p>
+        <MdBusiness></MdBusiness> Profession:  {company || 'student'}
+      </p>
+      <p>
+        <MdLocationOn></MdLocationOn> Location:  {location || 'world'}
+      </p>
+      <a href={'https://${blog}'}>
+        <MdLink></MdLink>  Blog:  {blog|| 'not yet'}
+      </a>
+
+    </div>
+  </Wrapper>;
 };
 const Wrapper = styled.article`
   background: var(--clr-white);
