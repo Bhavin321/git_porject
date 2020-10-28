@@ -2,58 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
+
+
 const Repos = () => {
-
- 
-// STEP 2 - Chart Data
-const chartData = [
-  {
-    label: "Venezuela",
-    value: "290"
-  },
-  {
-    label: "Saudi",
-    value: "260"
-  },
-  {
-    label: "Canada",
-    value: "180"
-  },
-  {
-    label: "Iran",
-    value: "140"
-  },
-  {
-    label: "Russia",
-    value: "115"
-  },
-  {
-    label: "UAE",
-    value: "100"
-  },
-  {
-    label: "US",
-    value: "30"
-  },
-  {
-    label: "China",
-    value: "30"
-  }
-];
-
 const {repos} = React.useContext(GithubContext)
+
+  console.log(repos)
+
  let languages=repos.reduce((total,item)=>{
   
-  const {langauge}=item;
+  const {language}=item;
 
-  if(!langauge)
+  if(!language)
     return total
-  if(!total[langauge]){
-    total[langauge]={label:langauge,value:1};
+  if(!total[language]){
+    total[language]={label:language,value:1};
   }
   else
   {
-    total[langauge]={...total[langauge],value:total[langauge].value+1}
+    total[language]={...total[language],value:total[language].value+1}
   }
     
     return total
@@ -63,7 +30,8 @@ const {repos} = React.useContext(GithubContext)
    return b.value-a.value
  }).slice(0,5)
 
-  
+ console.log('sample')
+  console.log(languages)
   // return <ExampleChart data={chartData}/>;
 
   return(

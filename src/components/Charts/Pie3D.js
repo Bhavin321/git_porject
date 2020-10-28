@@ -1,5 +1,3 @@
-// STEP 1 - Include Dependencies
-// Include react
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -19,28 +17,22 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 
-// STEP 3 - Creating the JSON object to store the chart configurations
-
 
 const ChartComponent = ({data})=>{
 
   const chartConfigs = {
-    type: "pie3d", // The chart type
-    width: "400", // Width of the chart
-    height: "400", // Height of the chart
-    dataFormat: "json", // Data type
+    type: "pie3d",
+    width: "400",
+    height: "400", 
+    dataFormat: "json", 
     dataSource: {
       // Chart Configuration
       chart: {
-        //Set the chart caption
+       
         caption: "Languages",
         //Set the chart subcaption
-        subCaption: "In MMbbl = One Million barrels",
+        subCaption: "Most popular languages used",
         //Set the x-axis name
-        xAxisName: "Country",
-        //Set the y-axis name
-        yAxisName: "Reserves (MMbbl)",
-        numberSuffix: "K",
         //Set the theme for your chart
         theme: "fusion",
         decimals:0,
