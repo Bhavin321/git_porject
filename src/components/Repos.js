@@ -4,6 +4,40 @@ import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 
 
+const chartData = [
+  {
+    label: "Venezuela",
+    value: "290"
+  },
+  {
+    label: "Saudi",
+    value: "260"
+  },
+  {
+    label: "Canada",
+    value: "180"
+  },
+  {
+    label: "Iran",
+    value: "140"
+  },
+  {
+    label: "Russia",
+    value: "115"
+  },
+  {
+    label: "UAE",
+    value: "100"
+  },
+  {
+    label: "US",
+    value: "30"
+  },
+  {
+    label: "China",
+    value: "30"
+  }
+];
 const Repos = () => {
 const {repos} = React.useContext(GithubContext)
 
@@ -11,33 +45,63 @@ const {repos} = React.useContext(GithubContext)
 
  let languages=repos.reduce((total,item)=>{
   
-  const {language}=item;
+  const {language,stargazers_count}=item;
 
   if(!language)
     return total
   if(!total[language]){
-    total[language]={label:language,value:1};
+    total[language]={label:language,value:1,stars:stargazers_count};
   }
   else
   {
-    total[language]={...total[language],value:total[language].value+1}
+    total[language]={...total[language],value:total[language].value+1,stars:total[language].stars+stargazers_count}
   }
     
     return total
  },{}) 
 
- languages=Object.values(languages).sort((a,b)=>{
+
+
+ const mostUsed=Object.values(languages).sort((a,b)=>{
    return b.value-a.value
  }).slice(0,5)
 
+
+
+ const mostPop=Object.values(languages).sort((a,b)=>{
+  return b.stars-a.stars
+}).map((item)=>{
+  return {...item,value:item.stars}
+}).slice(0,5)
+
+
+let {stars,forks}=repos.reduce((total,item)=>{
+  
+  const {stargazers_count,name,forks}=item;
+  total.stars[stargazers_count]={label:name,value:stargazers_count}
+
+  total.forks[forks]={label:name,value:forks}
+  return total
+  
+},{
+  stars:{},forks:{}
+})
+
+stars=Object.values(stars).slice(-5).reverse()
+forks=Object.values(forks).slice(-5).reverse()
+
+
  console.log('sample')
-  console.log(languages)
+  console.log(mostPop)
   // return <ExampleChart data={chartData}/>;
 
   return(
     <section className='section'>
       <Wrapper className='section-center'>
-          <Pie3D data={languages}/>
+        <Pie3D data={mostUsed}/>
+        <Column3D data={stars}/>
+        <Doughnut2D data={mostPop}/>
+        <Bar3D data={forks}/>
       </Wrapper>
     </section>
   )

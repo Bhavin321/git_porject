@@ -2,29 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { GithubContext } from '../context/context';
-const Search = () => {
+import Repos_data from '../components/Repos_data'
+import CommitsData from '../components/CommitData'
+
+const ShowCommits = () => {
 
   const [user,setUser]=React.useState('')
-
-  const {requests,error,searchGithubUser,searchContributionsRepos,searchReposavail,reposavail,isLoading} = React.useContext(GithubContext)
+  const [commit,setCommit]=React.useState('')
+  
+  const {requests,error,searchCommit} = React.useContext(GithubContext)
 
   console.log(requests);
 
   const handleSubmit = (e)=>{
     e.preventDefault()
 
-    if(user)
+    if(commit)
     {
-      searchGithubUser(user)
-      searchContributionsRepos(user)
-      searchReposavail(user)
+        searchCommit(user,commit)
     }
-    console.log(user);
+    console.log(commit);
   };
 
 
   return <section className='section'>
+       <br/><br/><br/>
     <Wrapper className='section-center'>
+       
       {error.show && <ErrorWrapper>
       <p>{error.msg}</p>
         </ErrorWrapper>}
@@ -32,12 +36,14 @@ const Search = () => {
          <div className='form-control'>
            <MdSearch/>
            <input type='text' placeholder='enter guthub user' value={user} onChange={(e)=>setUser(e.target.value)}/>
-           {requests>0 && (<button type='submit'>Search</button>)}
-           
+           <input type='text' placeholder='enter guthub repo' value={commit} onChange={(e)=>setCommit(e.target.value)}/>
+           {requests>0 && <button type='submit'>Search</button>}
         </div> 
       </form>  
-      <h3>requests:{requests}/60</h3>
     </Wrapper>
+    <CommitsData/>
+    <br/><br/><br/>
+   
   </section>;
 };
 
@@ -122,4 +128,4 @@ const ErrorWrapper = styled.article`
     letter-spacing: var(--spacing);
   }
 `;
-export default Search;
+export default ShowCommits;

@@ -17,7 +17,7 @@ const Card = () => {
     <p className='bio'>{bio}</p>
     <div className='links'>
       <p>
-        <MdBusiness></MdBusiness> Profession:  {company || 'student'}
+        <MdBusiness></MdBusiness> Profession:  {company || 'not available'}
       </p>
       <p>
         <MdLocationOn></MdLocationOn> Location:  {location || 'world'}

@@ -4,11 +4,15 @@ import styled from 'styled-components';
 import loginImg from '../images/bb2.png';
 
 const Login = () => {
+
+
+  const {loginWithRedirect}=useAuth0()
+
   return <Wrapper>
  <div className="container">
  <img src={loginImg} alt="Github User"/>
  <h1 style={{color:"#4682B4", fontSize:"4rem"}}>github User</h1><br/>
- <button className="btn "> &nbsp;&nbsp;Login&nbsp;&nbsp;</button>
+ <button className="btn" onClick={loginWithRedirect}> &nbsp;&nbsp;Login/sign up&nbsp;&nbsp;</button>
  </div>
   
   </Wrapper>;
