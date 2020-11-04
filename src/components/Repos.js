@@ -109,8 +109,9 @@ forks=Object.values(forks).slice(-5).reverse()
 
 const Wrapper = styled.div`
   display: grid;
+  padding-top:3rem;
   justify-items: center;
-  gap: 2rem;
+  gap: 5rem;
   @media (min-width: 800px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -120,14 +121,14 @@ const Wrapper = styled.div`
   }
 
   div {
-    width: 100% !important;
+    width: 100% ;
   }
   .fusioncharts-container {
-    width: 100% !important;
+    max-width: 100%;
   }
   svg {
-    width: 100% !important;
-    border-radius: var(--radius) !important;
+    width: 100%;
+    border-radius: var(--radius) ;
   }
 `;
 

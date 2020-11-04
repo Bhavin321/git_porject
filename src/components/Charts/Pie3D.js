@@ -24,7 +24,8 @@ const ChartComponent = ({data})=>{
     type: "pie3d",
     width: "400",
     height: "400", 
-    dataFormat: "json", 
+    dataFormat: "json",
+    maxWidth:"100%", 
     dataSource: {
       // Chart Configuration
       chart: {
