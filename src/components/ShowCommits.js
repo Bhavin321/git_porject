@@ -5,6 +5,8 @@ import { GithubContext } from '../context/context';
 import Repos_data from '../components/Repos_data'
 import CommitsData from '../components/CommitData'
 
+import './Card1.css';
+
 const ShowCommits = () => {
 
   const [user,setUser]=React.useState('')
@@ -26,7 +28,7 @@ const ShowCommits = () => {
 
 
   return <Wrapper1>
-    <Wrapper>
+    <Wrapper className="example">
   <div className='followers'>
        
       {error.show && <ErrorWrapper>
@@ -39,6 +41,7 @@ const ShowCommits = () => {
            {requests>0 && <button type='submit'>Search</button>}
         </div> 
       </form>  
+
     <CommitsData/>
    
     </div>
@@ -64,10 +67,10 @@ const Wrapper = styled.article`
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
   position: relative;
-  
+  padding-top:2rem;
   
   .form-control {
-    background: var(--clr-white);
+   background: #1e1e30!important;
     display: grid;
     align-items: center;
     grid-template-columns: auto 1fr auto;
@@ -75,10 +78,12 @@ const Wrapper = styled.article`
     border-radius: 5px;
     padding: 0.5rem;
     input {
-      border-color: transparent;
-      outline-color: var(--clr-grey-10);
+     border-color: #1e1e30!important;
+      background-color: white;
+      padding: 0.25rem 0.5rem;
+      
       letter-spacing: var(--spacing);
-      color: var(--clr-grey-3);
+     
       padding: 0.25rem 0.5rem;
     }
     input::placeholder {
@@ -87,18 +92,18 @@ const Wrapper = styled.article`
       letter-spacing: var(--spacing);
     }
     button {
-      border-radius: 5px;
-      border-color: transparent;
+     border-radius: 5px;
+      border-color:rgba(0, 123, 255, 0.125);
       padding: 0.25rem 0.5rem;
       text-transform: capitalize;
       letter-spacing: var(--spacing);
-      background: var(--clr-primary-5);
+      background: rgba(0, 123, 255, 0.125);
       color: var(--clr-white);
       transition: var(--transition);
       cursor: pointer;
       &:hover {
-        background: var(--clr-primary-8);
-        color: var(--clr-primary-1);
+        background: white;
+        color: black;
       }
     }
 
@@ -126,7 +131,7 @@ const Wrapper = styled.article`
     left: 0;
     transform: translateY(-100%);
    background:rgba(0, 123, 255, 0.125);
-    color:#F4D03F ;
+    color:	#00FFFF;
     border-top-right-radius: var(--radius);
     border-top-left-radius: var(--radius);
     text-transform: capitalize;
@@ -137,18 +142,13 @@ const Wrapper = styled.article`
   
   article {
     transition: var(--transition);
-    padding: 0.8rem 1rem;
+   padding-left:1rem;
     border-radius: var(--radius);
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     column-gap: 1rem;
-    img {
-      height: 100%;
-      width: 45px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+   
     
     h4 {
       margin-bottom: 0;

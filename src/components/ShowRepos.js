@@ -1,10 +1,11 @@
 import React from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
+import './Card1.css';
 
 const ShowRepos = () => {
   const {reposavail} = React.useContext(GithubContext)
-  return <Wrapper1><Wrapper>
+  return <Wrapper1><Wrapper className="example">
     <div className='followers'>
       {reposavail.map((reposa)=>{
         const {name,html_url}=reposa;
@@ -12,7 +13,7 @@ const ShowRepos = () => {
         console.log(name);
         return <article>
           <div> 
-          <a href={html_url} target="_blank"><h4><font color="#EBDEF0 ">Repo_Name:&nbsp;&nbsp;{name}</font></h4></a> 
+               <a href={html_url} target="_blank"><h4><font color="#EBDEF0 ">Repo_Name:&nbsp;&nbsp;{name}</font></h4></a> 
           </div>
         </article>
       })}
