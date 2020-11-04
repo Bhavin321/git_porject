@@ -62,7 +62,8 @@ const GithubProvider=({children}) =>{
          if(response)
          {
             setReposavail(response.data)
-            console.log("found all repo")
+            
+            console.log("found all repossssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
             console.log(response.data[0].name)
          }   
          else{
@@ -77,7 +78,7 @@ const GithubProvider=({children}) =>{
 
     const [commit,setCommit]=useState(mockCommit)
     
-    const searchCommit = async(global_user,repo)=>{
+    const searchCommit = async(user,repo)=>{
 
         toggleError()
         const response= await axios(`${rootUrl}/repos/${global_user}/${repo}/commits`)

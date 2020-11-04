@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -21,8 +21,10 @@ const ChartComponent = ({data})=>{
   const chartConfigs = {
     type: "doughnut2d",
     width: "100%",
+     
     height: "400", 
     dataFormat: "json", 
+    "theme": "candy",
     dataSource: {
       // Chart Configuration
       chart: {
@@ -32,6 +34,7 @@ const ChartComponent = ({data})=>{
         subCaption: "Most popular languages used",
         //Set the x-axis name
         //Set the theme for your chart
+         "bgColor": "#1e1e30",
         decimals:0,
         doughnutRadius:'40%',
         showPercentValues:0,

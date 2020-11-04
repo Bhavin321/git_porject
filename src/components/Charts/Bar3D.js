@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -11,7 +11,7 @@ import FusionCharts from "fusioncharts";
 import Chart from "fusioncharts/fusioncharts.charts";
 
 // Include the theme as fusion
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
 
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
@@ -20,6 +20,7 @@ const ChartComponent = ({data})=>{
 
   const chartConfigs = {
     type: "bar3d",
+    
     width: "100%",
     height: "400", 
     dataFormat: "json", 
@@ -28,6 +29,8 @@ const ChartComponent = ({data})=>{
       chart: {
        
         caption: "Most Forked Repos",
+        bgColor: "#1e1e30",
+        theme: "candy",
         yAxisName:'Forks',
         xAxisName:'Repos',
         xAxisNameFontSize:'16px',

@@ -2,45 +2,47 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { GithubContext } from '../context/context';
-const Search = () => {
+import Compare1 from '../components/Compare1'
+import Compare2 from '../components/Compare2'
 
-  const [user,setUser]=React.useState('')
+const Compare = () => {
 
-  const {requests,error,searchGithubUser,searchContributionsRepos,searchReposavail,reposavail,isLoading} = React.useContext(GithubContext)
-
-  console.log(requests);
-
-  const handleSubmit = (e)=>{
-    e.preventDefault()
-
-    if(user)
-    {
-      searchGithubUser(user)
-      searchContributionsRepos(user)
-      searchReposavail(user)
-    }
-    console.log(user);
-  };
-
-
-  return <section className='section'>
-    <Wrapper className='section-center'>
-      {error.show && <ErrorWrapper>
-      <p>{error.msg}</p>
-        </ErrorWrapper>}
-      <form onSubmit={handleSubmit}>
-         <div className='form-control'>
-           <MdSearch/>
-           <input type='text' placeholder='enter guthub user' value={user} onChange={(e)=>setUser(e.target.value)}/>
-           {requests>0 && (<button type='submit'>Search</button>)}
-        </div> 
-      </form>  
-      <h3>requests:{requests}/60</h3>
-    </Wrapper>
+  return <section className='section' style={{maxWidth:"100%"}}>
+     <Wrapper1 className='section-center'>
+        <Wrapper className='section-center'>
+          <Compare1/>
+          <Compare2/>
+        </Wrapper>
+      </Wrapper1>
   </section>;
 };
 
 const Wrapper = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 6rem;
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 2fr 3fr;
+  }
+
+  div {
+    width: 100% !important;
+  }
+  .fusioncharts-container {
+    width: 100% !important;
+  }
+  svg {
+    width: 100% !important;
+    border-radius: var(--radius) !important;
+  }
+`;
+
+
+const Wrapper1 = styled.div`
   position: relative;
   display: grid;
   gap: 1rem 1.75rem;
@@ -121,4 +123,5 @@ const ErrorWrapper = styled.article`
     letter-spacing: var(--spacing);
   }
 `;
-export default Search;
+
+export default Compare;

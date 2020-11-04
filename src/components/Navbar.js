@@ -2,24 +2,48 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 
+
 const Navbar = () => {
-  const {isAuthenticated,loginWithRedirect ,logout,user,isLoading}=useAuth0()
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    user,
+    isLoading,
+  } = useAuth0();
+  const isUser = isAuthenticated && user;
 
-  const isUser =isAuthenticated && user
-
-  return <Wrapper>
-    {isUser && user.picture && <img src={user.picture} alt={user.name}/>}
-    {isUser && user.name && <h4>welcome <strong>{user.name}</strong></h4>}
-
-    {isUser ? (<button onClick={()=>{logout({returnTo:window.location.origin})}}>Logout</button> ):(  <button onClick={loginWithRedirect }>Login</button>)}
-  
-    </Wrapper>;
+  return (
+    <div>
+    <Wrapper>
+      {isUser && user.picture && <img src={user.picture} alt={user.name} />}
+      {isUser && user.name && (
+        <h4>
+         <font color="white" >Welcome, <strong>{user.name.toUpperCase()}</strong></font>
+        </h4>
+      )}
+      {isUser ? (
+        <button
+          onClick={() => {
+            logout({ returnTo: window.location.origin });
+          }}
+        >
+          <font color="Red" ><b>Logout</b></font>
+        </button>
+      ) : (
+        <button onClick={loginWithRedirect}>login</button>
+      )}
+    </Wrapper> 
+    </div>
+  );
 };
+
+
 
 const Wrapper = styled.nav`
   padding: 1.5rem;
   margin-bottom: 4rem;
-  background: var(--clr-white);
+  background:#1e1e30;
   text-align: center;
   display: grid;
   grid-template-columns: auto auto 100px;

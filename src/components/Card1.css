@@ -1,0 +1,9 @@
+.example {
+    background: grey;
+  }
+  
+  .example:hover {
+    background: rgba(0, 123, 255, 0.125);
+    color: black;
+  }
+  

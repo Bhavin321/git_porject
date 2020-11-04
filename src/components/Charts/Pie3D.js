@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 
 // Include the react-fusioncharts component
 import ReactFC from "react-fusioncharts";
@@ -11,7 +11,7 @@ import FusionCharts from "fusioncharts";
 import Chart from "fusioncharts/fusioncharts.charts";
 
 // Include the theme as fusion
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+import FusionTheme from "fusioncharts/themes/fusioncharts.theme.candy";
 
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
@@ -22,7 +22,7 @@ const ChartComponent = ({data})=>{
 
   const chartConfigs = {
     type: "pie3d",
-    width: "100%",
+    width: "400",
     height: "400", 
     dataFormat: "json", 
     dataSource: {
@@ -34,7 +34,9 @@ const ChartComponent = ({data})=>{
         subCaption: "Most popular languages used",
         //Set the x-axis name
         //Set the theme for your chart
-        theme: "fusion",
+        "bgColor": "#1e1e30",
+        opacity:0.1,
+        theme: "candy",
         decimals:0,
         pieRadius:'40%',
       },
