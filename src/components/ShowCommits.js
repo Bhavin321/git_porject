@@ -25,9 +25,9 @@ const ShowCommits = () => {
   };
 
 
-  return <section className='section'>
-       <br/><br/><br/>
-    <Wrapper className='section-center'>
+  return <Wrapper1>
+    <Wrapper>
+  <div className='followers'>
        
       {error.show && <ErrorWrapper>
       <p>{error.msg}</p>
@@ -39,24 +39,33 @@ const ShowCommits = () => {
            {requests>0 && <button type='submit'>Search</button>}
         </div> 
       </form>  
-    </Wrapper>
     <CommitsData/>
-    <br/><br/><br/>
    
-  </section>;
+    </div>
+    </Wrapper>
+  </Wrapper1>;
 };
 
-const Wrapper = styled.div`
-  position: relative;
-  display: grid;
-  gap: 1rem 1.75rem;
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr max-content;
-    align-items: center;
-    h3 {
-      padding: 0 0.5rem;
-    }
+const ErrorWrapper = styled.article`
+  position: absolute;
+  width: 90vw;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  text-transform: capitalize;
+  p {
+    color: red;
+    letter-spacing: var(--spacing);
   }
+`;
+const Wrapper = styled.article`
+   background: #161625;
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  position: relative;
+  
+  
   .form-control {
     background: var(--clr-white);
     display: grid;
@@ -109,22 +118,56 @@ const Wrapper = styled.div`
       }
     }
   }
-  h3 {
-    margin-bottom: 0;
-    color: var(--clr-grey-5);
-    font-weight: 400;
-  }
-`;
-const ErrorWrapper = styled.article`
-  position: absolute;
-  width: 90vw;
-  top: 0;
-  left: 0;
-  transform: translateY(-100%);
-  text-transform: capitalize;
-  p {
-    color: red;
+
+  &::before {
+    content: 'commits in a repo';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+   background:rgba(0, 123, 255, 0.125);
+    color:#F4D03F ;
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+    text-transform: capitalize;
+    padding: 0.8rem 1rem 0 1rem;
     letter-spacing: var(--spacing);
+    font-size: 2rem;
   }
+  
+  article {
+    transition: var(--transition);
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 1rem;
+    img {
+      height: 100%;
+      width: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    h4 {
+      margin-bottom: 0;
+    }
+    a {
+      color: var(--clr-grey-5);
+    }
+  }
+  
+`;
+const Wrapper1 = styled.div`
+  padding-top: 10rem;
+  padding-left:21rem;
+  padding-right:21rem;
+  max-width:100%;
+  gap: 3rem 5rem;
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* align-items: start; */
 `;
 export default ShowCommits;

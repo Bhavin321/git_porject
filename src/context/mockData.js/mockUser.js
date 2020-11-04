@@ -1,4 +1,4 @@
-export default {
+export default{
   "login": "bhavingupta123",
   "id": 46310544,
   "node_id": "MDQ6VXNlcjQ2MzEwNTQ0",
@@ -17,18 +17,18 @@ export default {
   "received_events_url": "https://api.github.com/users/bhavingupta123/received_events",
   "type": "User",
   "site_admin": false,
-  "name": null,
-  "company": null,
+  "name": "Bhavin Gupta",
+  "company": "DSCE",
   "blog": "",
-  "location": null,
+  "location": "Bangalore",
   "email": null,
   "hireable": null,
-  "bio": null,
+  "bio": "Student",
   "twitter_username": null,
   "public_repos": 16,
   "public_gists": 0,
   "followers": 1,
   "following": 1,
   "created_at": "2019-01-02T06:02:17Z",
-  "updated_at": "2020-10-26T16:17:42Z"
+  "updated_at": "2020-11-04T10:54:14Z"
 }
